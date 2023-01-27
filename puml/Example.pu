@@ -1,0 +1,4 @@
+@startuml
+Bob -> Alice : goods
+Alice -> Bob: services
+@enduml
