@@ -7,50 +7,125 @@ Creation of Novel Emulate3D Simulations of Walmart Sites
 <$Swslg*0.05>
 end title
 :Assigned a new Walmart site to model;
-    
-    :Take the latest site code and
-    strip out the parts that would
-    prevent it from being run in
-    an E3D test environment;
-    note right
-    	You should probably move this to
-        being done after the mapping at the
-        very least.
-        ====
-        Expand more on this later
-        when you learn more about the PLC.
-    end note
+
+:Take the latest site code and
+strip out the parts that would
+prevent it from being run in
+an E3D test environment;
+note right
+    You should probably move this to
+    being done after the mapping at the
+    very least.
+    ====
+    Expand more on this later
+    when you learn more about the PLC.
+end note
     
     if (Has this site's type already been mapped in E3D) then (no)
-    	partition "**Libreoffice Calc** and **Draw.io**\nCreating a 2D map and\nsurveying every position" {
-			:Use Draw.io to create a very simple map of the site
-			using the provided Draw.io template;
+    	partition "**Excel** and **Visio**\nCreating a 2D map and\nsurveying every position" {
+			partition "**Visio**\nVisual Site Mapping"{
+                :Attain documentation relevant documentation.
+                If SPOC or Box is installed on site and a config exists
+                try and use that in addition to any pictures you can get
+                
+                Additionally if SIS drawings and DWG Cad files exists
+                try and find those because they contain useful
+                information like length and connections;
+
+                floating note left
+                    A couple pieces of information
+                    that would be really nice for you to
+                    be able to display easily is grouped 
+                    conveyors, lift objects, what direction
+                    a conveyor/chain is going, and being able to
+                    show what positions are complex and what are
+                    relatively simple (I.E. simple conveyor or machine)
+                end note
+                floating note left
+                    Create a Visio Bible as you're making
+                    your first site map. Make sure to try to 
+                    create standards that are simple
+                    to conform to even for complex 
+                    edge cases.
+                end note
+
+                :Begin making a top-down perspective map, 
+                mapping position tiles from left to right,
+                bottom to top, with each tile including
+                the following:
+                 - Position ID centered in plaintext
+                 - Arrow indicating direction
+                   - Horizontal Arrows belong on top
+                   - Vertical Arrows belong on the left
+                 - Bottom right **complexity indicator**
+
+                When finished group each position tile
+                and their associated markings together
+
+                Note: Assume each conveyor is only
+                1" wide in Visio, use the template
+                positions for consistency
+                
+                Note: Do not take absolute size and
+                position into account yet, only
+                make something rough and simple;
+
+                floating note left
+                    Complexity Rankings for each position
+                    in the bottom right of their respective squares:
+                    Green is simple
+                    - just a conveyor, double conveyor, etc
+                    Yellow is a little complex
+                    - lift and conveyor, has a sensor tree, etc
+                    Red is very complex
+                    - Requires a custom solution
+                    - Think PSB dispensers and Shuttles
+                    - Also called an SP or Special Position
+                end note
+
+                :Find and indicate the rough position
+                and size of each interface panel, cabinet,
+                and other devices that seem relevant.;
+
+                floating note left
+                 What kind of things do we want to map
+                 and what kind of things do we want to ignore?
+                end note
+
+                :Begin assigning a light color to each
+                group and take every position in each
+                group and fill the whitespace with that
+                group's color. 
+                
+                Repeated colors are encouraged for
+                sites where two layouts are mirrored
+                (Example: Group 10 and Group 40 in
+                Walmart's 7015 site);
+
+                floating note left
+                 Do we want to create a dedicated
+                 universal color pallete,
+                 assign colors on a site-by-site basis,
+                 or have specific color palletes
+                 for specific customers?
+                end note
+
+                floating note left
+                 Is there anything else we can add
+                 to encourage legibility, information 
+                 at a glance, and overall value?
+                end note
+
+                :Try and correct the dimensions of each position,
+                noting their length and width where relevant using
+                text. Do not visually change the length of your
+                positions except if the difference is egregious.
+                
+                Try and put the length of a position as text in
+                each dimension's particular Dimensional Arrows;
+            }
+
 			
-			floating note left
-				A couple pieces of information
-				that would be really nice for you to
-				be able to display easily is grouped 
-				conveyors, lift objects, what direction
-				a conveyor/chain is going, and being able to
-				show what positions are complex and what are
-				relatively simple (I.E. simple conveyor or machine)
-			end note
-			floating note left
-				Maybe a ranking system that's show in the bottom
-				right of each square, like as a percentage or a color,
-				to demonstrate the complexity of a particular position
-			end note
-			floating note left
-				The rankings could have three states for simplicity's sake
-				Green is simple
-				 - (just a conveyor, double conveyor, etc)
-				Yellow is a little complex
-				 - (lift and conveyor, has a sensor tree, etc)
-				Red is very complex
-				 - (Requires a custom solution)
-				 - (Think PSB dispensers and Shuttles)
-				 - (Also called an SP or Special Position)
-			end note
 			
 			:Use Libreoffice Calc and open the file
 			templates/E3D-DataGathering-Template.fods .
@@ -116,20 +191,22 @@ end title
              that will be used in
              the project;
         } 
-    :Confirm and correct placement
-     and connections of every position;
-     floating note left: Account for multi-position conveyors
-    :Begin creating the model, starting
-     with only conveyors and SPs;
-    :Confirm NO/NC status of position
-     photoeyes;
-    :Begin placing position photoeyes
-     in the model, confirming correct
-     positioning if issues arise;
-    :Fill out the tag table using
-     already gathered inputs;
+        :Confirm and correct placement
+        and connections of every position;
+        floating note left: Account for multi-position conveyors
+        :Begin creating the model, starting
+        with only conveyors and SPs;
+        :Confirm NO/NC status of position
+        photoeyes;
+        :Begin placing position photoeyes
+        in the model, confirming correct
+        positioning if issues arise;
+        :Fill out the tag table using
+        already gathered inputs;
     else (yes)
-    	:Ensure validity of tag table;
+    	:Ensure that this site conforms
+        with it's previously created site type
+        documentation and E3D Projects;
     endif
     
     while(Try and Connect to PLC) is (Doesn't work!) 
