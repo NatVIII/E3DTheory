@@ -8,6 +8,20 @@ Creation of Novel Emulate3D Simulations of Walmart Sites
 end title
 :Assigned a new Walmart site to model;
 
+:Enter the CS Department's Controls Repository Sharepoint
+and locate the reference folder for the assigned site.
+
+Inside the site's folder locate /09 Emulation/Emulate3D/ 
+or recreate it from the _Template folder at the root of
+the CS Controls Repository.;
+
+note left
+The folder /09 Emulation/Emulate3D/
+is referred to from here forward
+as the "Root E3D" or "Root Emulate3D"
+folder.
+end note
+
 :Take the latest site code and
 strip out the parts that would
 prevent it from being run in
@@ -21,7 +35,7 @@ note right
     when you learn more about the PLC.
 end note
     
-    if (Does this site have a completed\n/09 Emulation/Emulate3D/\nfolder in it's location in the CS Controls \nSharepoint Repository?) then (no)
+    if (Does this site have a completed\nRoot Emulate3D\nfolder in it's location in the CS Controls \nSharepoint Repository?) then (no)
     	partition "**Section 1** \n**Excel** and **Visio**\nCreating a 2D map and\nsurveying every position" {
 			partition "**Section 1.a** \n**Visio**\nVisual Site Mapping"{
                 :Attain documentation relevant documentation.
@@ -30,17 +44,11 @@ end note
                 
                 Additionally if SIS drawings and DWG Cad files exists
                 try and find those because they contain useful
-                information like length and connections;
+                information like length and connections.
+                
+                Save copies or references to all these files in the root
+                Emulate3D/05 Data Collection/Relevant Documentation/;
 
-                floating note left
-                    A couple pieces of information
-                    that would be really nice for you to
-                    be able to display easily is grouped 
-                    conveyors, lift objects, what direction
-                    a conveyor/chain is going, and being able to
-                    show what positions are complex and what are
-                    relatively simple (I.E. simple conveyor or machine)
-                end note
                 floating note left
                     Create a Visio Bible as you're making
                     your first site map. Make sure to try to 
@@ -59,8 +67,14 @@ end note
                    - Vertical Arrows belong on the left
                  - Bottom right **complexity indicator**
 
-                When finished group each position tile
-                and their associated markings together
+                It's highly reccomended to use the
+                templates and reccomended structure in
+                the following CS Controls Sharepoint folder
+
+                Documents > 
+                 Reference Documents > 
+                  Emulate3D Standards > 
+                   E3D-SiteMapping-Stencils.vsdx
 
                 Note: Assume each conveyor is only
                 1" wide in Visio, use the template
@@ -70,7 +84,7 @@ end note
                 position into account yet, only
                 make something rough and simple;
 
-                floating note left
+                note left
                     Complexity Rankings for each position
                     in the bottom right of their respective squares:
                     Green is simple
@@ -83,15 +97,6 @@ end note
                     - Also called an SP or Special Position
                 end note
 
-                :Find and indicate the rough position
-                and size of each interface panel, cabinet,
-                and other devices that seem relevant.;
-
-                floating note left
-                 What kind of things do we want to map
-                 and what kind of things do we want to ignore?
-                end note
-
                 :Begin assigning a light color to each
                 group and take every position in each
                 group and fill the whitespace with that
@@ -102,45 +107,50 @@ end note
                 (Example: Group 10 and Group 40 in
                 Walmart's 7015 site);
 
-                floating note left
-                 Do we want to create a dedicated
-                 universal color pallete,
-                 assign colors on a site-by-site basis,
-                 or have specific color palletes
-                 for specific customers?
+                note left
+                 If you want to find a pleasing color
+                 pallete to use I recommend using
+                 https://lokeshdhakar.com/projects/color-thief/
+                 and importing a pleasing picture that
+                 makes you think of the site's location, say
+                 a painting or poster from the town, or
+                 graffiti art you can find online.
+
+                 Ensure sure you adhere to the concept of
+                 assuring readability of the label and
+                 differentiating between the group color
+                 and the complexity indicator color.
+
+                 Try and save these color swatches
+                 somewhere for future reference.
                 end note
 
-                floating note left
-                 Is there anything else we can add
-                 to encourage legibility, information 
-                 at a glance, and overall value?
-                end note
-
-                :Try and correct the dimensions of each position,
-                noting their length and width where relevant using
-                text. Do not visually change the length of your
-                positions except if the difference is egregious.
+                :Include a title and information at the
+                bottom left corner of each page of the Visio
+                illustration.;
                 
-                Try and put the length of a position as text in
-                each dimension's particular Dimensional Arrows;
+                :Save this document into the
+                root Emulate3D folder in the subdirectory
+                "05 Data Collection";
             }			
 			
             partition "**Section 1.b** \n**Excel**\nSite I/O Mapping"{
-                :Use Libreoffice Calc and open the file
-                templates/E3D-DataGathering-Template.fods .
-                Change "Template" in the filename to your site's name
-                and save in the relevant directory.
+                :In the CS Controls Sharepoint find the
+                following file:
+
+                Documents > 
+                 Reference Documents > 
+                  Emulate3D Standards > 
+                   E3D-DataGather-Template.xlsx
                 
-                Begin filling it out by creating an entry for each
-                position, then begin expanding each position's IO
-                in the sheet. If you encounter a position that's complex
-                just write down that it is IS complex and it can be come
-                back to later.;
-                floating note left: Expand on this more later
-                floating note left 
-                    What kind of information
-                    needs to be gathered?
-                end note
+                Clone this file into your site's Emulate3D
+                folder under "05 Data Collection" and
+                rename it into
+                "E3D-DataGather-$(SITENAME).xlsx"
+                with whatever identifier being standard
+                for that site's customer location naming
+                convention standing in for $(SITENAME);
+
             }
         }
         partition "**Section 2**\n**Emulate3D** and **Step7/TIA Portal**\nCreating and modifying\nSP catalogue items" {
