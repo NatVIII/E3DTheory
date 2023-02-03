@@ -21,9 +21,9 @@ note right
     when you learn more about the PLC.
 end note
     
-    if (Has this site's type already been mapped in E3D) then (no)
-    	partition "**Excel** and **Visio**\nCreating a 2D map and\nsurveying every position" {
-			partition "**Visio**\nVisual Site Mapping"{
+    if (Does this site have a completed\n/09 Emulation/Emulate3D/\nfolder in it's location in the CS Controls \nSharepoint Repository?) then (no)
+    	partition "**Section 1** \n**Excel** and **Visio**\nCreating a 2D map and\nsurveying every position" {
+			partition "**Section 1.a** \n**Visio**\nVisual Site Mapping"{
                 :Attain documentation relevant documentation.
                 If SPOC or Box is installed on site and a config exists
                 try and use that in addition to any pictures you can get
@@ -123,28 +123,27 @@ end note
                 
                 Try and put the length of a position as text in
                 each dimension's particular Dimensional Arrows;
+            }			
+			
+            partition "**Section 1.b** \n**Excel**\nSite I/O Mapping"{
+                :Use Libreoffice Calc and open the file
+                templates/E3D-DataGathering-Template.fods .
+                Change "Template" in the filename to your site's name
+                and save in the relevant directory.
+                
+                Begin filling it out by creating an entry for each
+                position, then begin expanding each position's IO
+                in the sheet. If you encounter a position that's complex
+                just write down that it is IS complex and it can be come
+                back to later.;
+                floating note left: Expand on this more later
+                floating note left 
+                    What kind of information
+                    needs to be gathered?
+                end note
             }
-
-			
-			
-			:Use Libreoffice Calc and open the file
-			templates/E3D-DataGathering-Template.fods .
-			Change "Template" in the filename to your site's name
-			and save in the relevant directory.
-			
-			Begin filling it out by creating an entry for each
-			position, then begin expanding each position's IO
-			in the sheet. If you encounter a position that's complex
-			just write down that it is IS complex and it can be come
-			back to later.;
-        	floating note left: Expand on this more later
-            floating note left 
-            	What kind of information
-            	needs to be gathered?
-           	end note
-
         }
-        partition "**Emulate3D** and **Step7/TIA Portal**\nCreating and modifying\nSP catalogue items" {
+        partition "**Section 2**\n**Emulate3D** and **Step7/TIA Portal**\nCreating and modifying\nSP catalogue items" {
             while (Does every <i>SP</i> in it already have a template?) is (no)
             floating note left
             	An SP is a __S__pecial __P__ositions
@@ -191,18 +190,21 @@ end note
              that will be used in
              the project;
         } 
-        :Confirm and correct placement
-        and connections of every position;
-        floating note left: Account for multi-position conveyors
-        :Begin creating the model, starting
-        with only conveyors and SPs;
-        :Confirm NO/NC status of position
-        photoeyes;
-        :Begin placing position photoeyes
-        in the model, confirming correct
-        positioning if issues arise;
-        :Fill out the tag table using
-        already gathered inputs;
+
+        partition "**Section 3**\n**Emulate3D**\nCreating the model and\nadding finishing touches"{
+            :Confirm and correct placement
+            and connections of every position;
+            floating note left: Account for multi-position conveyors
+            :Begin creating the model, starting
+            with only conveyors and SPs;
+            :Confirm NO/NC status of position
+            photoeyes;
+            :Begin placing position photoeyes
+            in the model, confirming correct
+            positioning if issues arise;
+            :Fill out the tag table using
+            already gathered inputs;
+        }
     else (yes)
     	:Ensure that this site conforms
         with it's previously created site type
